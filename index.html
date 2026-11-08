@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Свод законов · Российская Федерация</title>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--tx:#d8d3c8;--mu:#8a867d;--ac:#d1ad72;--ln:rgba(255,255,255,.07);--pn:rgba(255,255,255,.028);}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px;background:#07080a}
+body{margin:0;color:var(--tx);background:#07080a;font:400 14px/1.5 Inter,system-ui,sans-serif;display:flex;min-height:100vh}
+
+/* живой фон */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(120% 90% at 50% 0,#0d0e12,#050506)}
+.bl{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform}
+.b1{width:62vmax;height:62vmax;left:-18vmax;top:-22vmax;background:radial-gradient(circle,rgba(160,112,52,.42),transparent 65%);animation:d1 38s ease-in-out infinite alternate}
+.b2{width:56vmax;height:56vmax;right:-20vmax;top:18vmax;background:radial-gradient(circle,rgba(34,84,96,.42),transparent 65%);animation:d2 46s ease-in-out infinite alternate}
+.b3{width:50vmax;height:50vmax;left:30vmax;bottom:-25vmax;background:radial-gradient(circle,rgba(90,60,130,.35),transparent 65%);animation:d1 55s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate(18vmax,12vmax) scale(1.15)}}@keyframes d2{to{transform:translate(-22vmax,-8vmax) scale(.9)}}
+.bg::after{content:"";position:absolute;inset:0;opacity:.09;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+.bg::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(90% 70% at 50% 40%,transparent 40%,rgba(0,0,0,.7))}
+
+/* сайдбар */
+aside{width:320px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;overflow-x:hidden;padding:26px 14px 30px 22px;border-right:1px solid var(--ln);background:rgba(6,6,8,.45);backdrop-filter:blur(14px)}
+.br{font:600 19px Literata,Georgia,serif;letter-spacing:.01em}.br small{display:block;font:400 11px Inter;color:var(--mu);letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+.lw{margin-top:22px}
+.lh{display:flex;justify-content:space-between;gap:12px;width:100%;padding:8px 10px;margin-left:-10px;background:none;border:0;border-radius:8px;color:var(--tx);font:500 13.5px Inter;text-align:left;cursor:pointer;transition:background .3s}
+.lh:hover{background:var(--pn)}
+.lh span{flex:1;line-height:1.3}
+.lh em{font-style:normal;color:var(--mu);font-size:12px;flex:none;margin-top:2px}
+.lh.cur{color:var(--ac)}
+
+.chapter-list{list-style:none;margin:4px 0 0;padding:0 0 0 10px;border-left:1px solid var(--ln)}
+.chapter-list li{margin:0}
+.chapter-list a{display:flex;gap:6px;align-items:baseline;padding:6px 10px;color:var(--mu);text-decoration:none;font-size:12.5px;line-height:1.35;transition:color .3s;overflow:hidden;}
+.chapter-list a:hover{color:var(--tx)}
+.chapter-list a b{color:var(--ac);font-weight:500;flex:none;}
+.ch-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;}
+.section-label { margin: 10px 0 4px 0; font-size: 11px; color: var(--mu); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+
+/* основной блок */
+main{flex-grow:1;max-width:1000px;margin:0 auto;width:100%;padding:0 clamp(18px,5vw,72px) 120px}
+.hd{position:sticky;top:0;z-index:5;padding:20px 0 14px;background:linear-gradient(#07080a 55%,transparent)}
+.sw{position:relative}.sw input{width:100%;padding:14px 90px 14px 44px;font:400 15px Inter;color:var(--tx);background:rgba(255,255,255,.04);border:1px solid var(--ln);border-radius:12px;outline:0;transition:border-color .3s,background .3s}
+.sw input:focus{border-color:rgba(209,173,114,.5);background:rgba(255,255,255,.06)}
+.sw svg{position:absolute;left:15px;top:15px;width:17px;opacity:.5}.sw kbd{position:absolute;right:14px;top:14px;font:11px Inter;color:var(--mu);border:1px solid var(--ln);border-radius:5px;padding:2px 7px}
+#res{position:absolute;left:0;right:0;top:56px;max-height:60vh;overflow:auto;background:rgba(10,10,13,.96);border:1px solid var(--ln);border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.6);display:none}
+#res.on{display:block}#res a{display:block;padding:12px 16px;border-bottom:1px solid var(--ln);text-decoration:none;color:var(--tx);cursor:pointer}
+#res a:last-child{border:0}#res a.sel,#res a:hover{background:rgba(209,173,114,.08)}
+#res .rt{font:500 12px Inter;color:var(--ac);margin-bottom:3px}#res .rs{font:400 14px/1.5 Literata,serif;color:#b9b5aa}#res .no{padding:16px;color:var(--mu)}
+h1{font:500 38px/1.15 Literata,Georgia,serif;margin:34px 0 8px;letter-spacing:-.01em}.meta{color:var(--mu);margin:0 0 6px}
+.tb{display:flex;gap:8px;margin:22px 0 4px}.bt{background:var(--pn);border:1px solid var(--ln);color:var(--mu);border-radius:8px;padding:7px 13px;font:13px Inter;cursor:pointer;transition:.3s}.bt:hover{color:var(--ac);border-color:rgba(209,173,114,.4)}
+
+/* Стили для заголовков разделов и глав */
+h3.sec-title { color:var(--ac); text-transform:uppercase; font:500 18px/1.3 Literata,serif; border-bottom:1px solid var(--ln); padding-bottom:8px; margin:40px 0 16px; letter-spacing:1px; }
+h2.chapter-title { color:var(--tx); font:500 24px/1.3 Literata,serif; margin:52px 0 14px; }
+h2.chapter-title span { display:block; font:500 11px Inter; letter-spacing:.16em; text-transform:uppercase; color:var(--ac); margin-bottom:8px; }
+
+/* статьи */
+.art{border-top:1px solid var(--ln);transition:background .5s}.art:last-child{border-bottom:1px solid var(--ln)}
+.art.flash{background:rgba(209,173,114,.1)}.art.open{background:var(--pn)}
+.ah{display:flex;align-items:baseline;gap:18px;width:100%;padding:17px 14px;background:none;border:0;color:var(--tx);text-align:left;cursor:pointer}
+.an{flex:none;width:92px;font:500 14px Inter;color:var(--ac)}
+.at{flex:1;font:400 16px/1.5 Literata,serif;color:#a8a49a;transition:color .3s}
+.ah:hover .at,.art.open .at{color:var(--tx)}
+.ah i{flex:none;width:8px;height:8px;border-right:1.5px solid var(--mu);border-bottom:1.5px solid var(--mu);transform:rotate(45deg);transition:transform .4s;margin-right:4px}
+.art.open .ah i{transform:rotate(225deg) translate(-2px,-2px)}
+.ab{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.3,.7,.2,1)}.art.open .ab{grid-template-rows:1fr}.ab>div{overflow:hidden}
+.pl{display:grid;gap:10px;padding:4px 14px 22px 124px}
+.pp{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:16px;align-items:start;padding:16px 18px;border:1px solid var(--ln);border-radius:12px;background:rgba(255,255,255,.022);transition:border-color .3s,background .3s}
+.pp.one{grid-template-columns:minmax(0,1fr) auto}
+.pp:hover{border-color:rgba(209,173,114,.28);background:rgba(255,255,255,.04)}
+.pn{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:rgba(209,173,114,.1);color:var(--ac);font:500 13px Inter}
+.pp p{margin:0;font:400 18px/1.7 Literata,Georgia,serif;color:var(--tx);max-width:640px}
+.tl{display:flex;opacity:0;transition:opacity .3s}.pp:hover .tl{opacity:1}
+.tl button{background:none;border:1px solid var(--ln);color:var(--mu);border-radius:6px;font:11.5px Inter;padding:4px 9px;cursor:pointer;transition:.25s;white-space:nowrap}.tl button:hover{color:var(--ac);border-color:rgba(209,173,114,.4)}
+mark{background:rgba(209,173,114,.3);color:#f2e3c4;border-radius:3px;padding:0 1px}
+.fd{animation:fd .6s both}@keyframes fd{from{opacity:0;transform:translateY(8px)}}
+
+/* Адаптивность для телефонов */
+@media(max-width: 860px) {
+    body { flex-direction: column; }
+    aside { width: 100%; height: auto; max-height: 40vh; position: static; border-right: 0; border-bottom: 1px solid var(--ln); padding: 16px; }
+    main { max-width: 100%; padding: 0 16px 120px; }
+    .an{width:64px}
+    .pl{padding-left:14px}
+    .tl{opacity:.7}
+    h1{font-size:28px}
+}
+@media(hover:none){.tl{opacity:.7}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Заглушка */
+#loading{position:fixed;inset:0;background:#07080a;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;transition:opacity .5s}
+.spinner{width:40px;height:40px;border:3px solid rgba(209,173,114,.2);border-top-color:var(--ac);border-radius:50%;animation:spin 1s linear infinite;margin-bottom:15px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div id="loading">
+    <div class="spinner"></div>
+    <div style="color:var(--ac);font-family:Inter,sans-serif;">Сборка базы законов...</div>
+</div>
+
+<div class="bg"><i class="bl b1"></i><i class="bl b2"></i><i class="bl b3"></i></div>
+<aside>
+    <div class="br">Свод законов<small>Российская Федерация</small></div>
+    <div id="nav"></div>
+</aside>
+<main>
+ <div class="hd">
+   <div class="sw">
+     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg>
+     <input id="q" placeholder="Поиск: слово, «ст 3»…" autocomplete="off" spellcheck="false">
+     <kbd>/</kbd>
+     <div id="res"></div>
+   </div>
+ </div>
+ <div id="view"></div>
+</main>
+
+<script src="laws_data.js"></script>
+<script>
+const $ = s => document.querySelector(s), view = $('#view'), qi = $('#q'), res = $('#res');
+const norm = s => s.toLowerCase().replace(/ё/g, 'е'), esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+// Жесткий словарь для Конституции (если в базе нет названий глав)
+const constTitles = {
+    "ГЛАВА 1": "Основы конституционного строя",
+    "ГЛАВА 2": "Права и свободы человека и гражданина",
+    "ГЛАВА 3": "Федеративное устройство",
+    "ГЛАВА 4": "Президент Российской Федерации",
+    "ГЛАВА 5": "Федеральное Собрание",
+    "ГЛАВА 6": "Правительство Российской Федерации",
+    "ГЛАВА 7": "Судебная власть и прокуратура",
+    "ГЛАВА 8": "Местное самоуправление",
+    "ГЛАВА 9": "Конституционные поправки и пересмотр Конституции"
+};
+
+if (typeof LAWS === 'undefined' || !Array.isArray(LAWS) || !LAWS.length) {
+    document.getElementById('loading').innerHTML = '<div style="color:#ff6b6b; text-align:center; font-family:sans-serif; padding:20px;">Ошибка: файл laws_data.js не найден или пуст.</div>';
+} else {
+    // СОРТИРОВКА
+    const priorityMap = [
+        { kw: 'Конституция', w: 1 },
+        { kw: 'Гражданский кодекс', w: 2 },
+        { kw: 'Уголовный кодекс', w: 3 },
+        { kw: 'Кодекс Российской Федерации об административных правонарушениях', w: 4 },
+        { kw: 'Трудовой кодекс', w: 5 },
+        { kw: 'Налоговый кодекс', w: 6 },
+        { kw: 'Семейный кодекс', w: 7 },
+        { kw: 'Жилищный кодекс', w: 8 },
+        { kw: 'Земельный кодекс', w: 9 },
+        { kw: 'Бюджетный кодекс', w: 10 },
+        { kw: 'Уголовно-процессуальный кодекс', w: 11 },
+        { kw: 'Гражданский процессуальный кодекс', w: 12 },
+        { kw: 'Арбитражный процессуальный кодекс', w: 13 },
+        { kw: 'Кодекс административного судопроизводства', w: 14 },
+        { kw: 'Лесной кодекс', w: 15 },
+        { kw: 'Водный кодекс', w: 16 },
+        { kw: 'Воздушный кодекс', w: 17 },
+        { kw: 'Кодекс торгового мореплавания', w: 18 },
+        { kw: 'Кодекс внутреннего водного транспорта', w: 19 },
+        { kw: 'Таможенный кодекс', w: 20 },
+        { kw: 'Градостроительный кодекс', w: 21 }
+    ];
+
+    function getWeight(title) {
+        for (let i = 0; i < priorityMap.length; i++) {
+            if (title.includes(priorityMap[i].kw)) {
+                let sub = 0;
+                if (title.includes('Часть первая')) sub = 1;
+                if (title.includes('Часть вторая')) sub = 2;
+                if (title.includes('Часть третья')) sub = 3;
+                if (title.includes('Часть четвертая')) sub = 4;
+                return priorityMap[i].w * 100 + sub;
+            }
+        }
+        return 9999;
+    }
+
+    LAWS.sort((a, b) => getWeight(a.title) - getWeight(b.title));
+
+    const loadingScreen = document.getElementById('loading');
+    loadingScreen.style.opacity = '0';
+    setTimeout(() => loadingScreen.remove(), 500);
+    initApp();
+}
+
+function initApp() {
+    let cur = LAWS[0], openLawId = LAWS[0].id, terms = [];
+
+    LAWS.forEach(l => {
+        if (!l.sections) return;
+        l.sections.forEach(s => {
+            if (!s.chapters) return;
+            s.chapters.forEach(c => {
+                if (!c.articles) return;
+                c.articles.forEach((a, i) => {
+                    a.id = l.id + '-' + c.id + '-' + i + '-' + (a.n || '').replace(/[^a-zA-Zа-яА-Я0-9]/g, '');
+                    a.l = l; a.c = c;
+                    const body = Array.isArray(a.paragraphs) ? a.paragraphs.join(' ') : '';
+                    a.hay = norm(l.title + ' ' + (c.n||'') + ' ' + (c.t||'') + ' ' + (a.n || '') + ' ' + body);
+                });
+            });
+        });
+    });
+
+    function getChapterName(l, c) {
+        if (l.title.includes('Конституция') && constTitles[(c.n || '').toUpperCase()]) {
+            return constTitles[(c.n || '').toUpperCase()];
+        }
+        return c.t;
+    }
+
+    function hl(t, ts) {
+        if (!ts.length) return esc(t);
+        const n = norm(t), r = [];
+        ts.forEach(w => { let i = -1; while ((i = n.indexOf(w, i + 1)) > -1) r.push([i, i + w.length]); });
+        r.sort((x, y) => x[0] - y[0]);
+        const m = [];
+        r.forEach(x => { const l = m[m.length - 1]; l && x[0] <= l[1] ? l[1] = Math.max(l[1], x[1]) : m.push(x); });
+        let o = '', p = 0;
+        m.forEach(([s, e]) => { o += esc(t.slice(p, s)) + '<mark>' + esc(t.slice(s, e)) + '</mark>'; p = e; });
+        return o + esc(t.slice(p));
+    }
+
+    function nav() {
+        $('#nav').innerHTML = LAWS.map(l => {
+            const isOpen = l.id === openLawId;
+            return `
+            <div class="lw">
+                <button class="lh${l.id === cur.id ? ' cur' : ''}" data-l="${l.id}">
+                    <span>${esc(l.title)}</span>
+                    <em>${l.sections ? l.sections.reduce((n, s) => n + (s.chapters ? s.chapters.length : 0), 0) : '—'}</em>
+                </button>
+                ${isOpen && l.sections ? `
+                    <ul class="chapter-list on">
+                        ${l.sections.map(s => `
+                            ${s.n ? `<li class="section-label">${esc(s.n)}</li>` : ''}
+                            ${(s.chapters || []).map(c => {
+                                const cname = getChapterName(l, c);
+                                return `
+                                <li>
+                                    <a href="#${c.id}" title="${esc(cname)}">
+                                        <b>${esc(c.n.replace(/Глава /i, '').replace(/ГЛАВА /i, ''))}</b>
+                                        <span class="ch-title">${esc(cname)}</span>
+                                    </a>
+                                </li>
+                            `}).join('')}
+                        `).join('')}
+                    </ul>
+                ` : ''}
+            </div>
+        `}).join('');
+    }
+
+    function show(l) {
+        cur = l; nav();
+        let html = `<div class="fd"><h1>${esc(l.title)}</h1><p class="meta">${esc(l.meta || '')}</p>
+        <div class="tb"><button class="bt" data-x="1">Раскрыть все статьи</button><button class="bt" data-x="0">Свернуть все</button></div>`;
+
+        if (!l.sections || !l.sections.length) {
+            html += `<div style="padding: 20px; color: var(--mu);">В документе нет структурированных статей.</div>`;
+        } else {
+            l.sections.forEach(s => {
+                if (s.n) html += `<h3 class="sec-title">${esc(s.n)}</h3>`;
+                (s.chapters || []).forEach(c => {
+                    const cname = getChapterName(l, c);
+                    html += `<h2 class="chapter-title" id="${c.id}"><span>${esc(c.n || '')}</span>${esc(cname)}</h2><div>`;
+                    (c.articles || []).forEach(a => { html += art(a); });
+                    html += `</div>`;
+                });
+            });
+        }
+        html += `</div>`;
+        view.innerHTML = html;
+    }
+
+    function articleNum(n) {
+        const m = (n || '').match(/^Статья\s+([\d.\-]+)/i);
+        return m ? m[1] : (n || '');
+    }
+
+    function articleTitle(n) {
+        const m = (n || '').match(/^Статья\s+[\d.\-]+\.?\s*(.*)$/i);
+        return m ? m[1].trim() : '';
+    }
+
+    function art(a) {
+        const paras = Array.isArray(a.paragraphs) ? a.paragraphs : [];
+        const one = paras.length === 1;
+        const titleText = articleTitle(a.n);
+        const preview = titleText ? titleText : (paras[0] ? paras[0].substring(0, 120) : '(текст не найден)');
+
+        return `<section class="art" id="${a.id}">
+            <button class="ah">
+                <span class="an">${esc(articleNum(a.n))}</span>
+                <span class="at">${hl(preview, terms)}</span>
+                <i></i>
+            </button>
+            <div class="ab"><div><div class="pl">
+                ${paras.length
+                    ? paras.map((t, i) => `<div class="pp${one ? ' one' : ''}">
+                        ${one ? '' : `<span class="pn">${i + 1}</span>`}
+                        <p>${hl(t, terms)}</p>
+                        <span class="tl"><button>Копировать</button></span>
+                    </div>`).join('')
+                    : `<div class="pp one"><p style="color:var(--mu);font-style:italic;">Текст статьи не найден.</p></div>`
+                }
+            </div></div></div>
+        </section>`;
+    }
+
+    function go(id, flash) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (el.classList.contains('art')) {
+            el.classList.add('open');
+            if (flash) { el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 1800); }
+        }
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+    }
+
+    function openArt(a) {
+        res.classList.remove('on');
+        if (cur !== a.l) {
+            openLawId = a.l.id;
+            show(a.l);
+        } else if (terms.length) show(cur);
+        history.replaceState(null, '', '#' + a.id);
+        go(a.id, 1);
+    }
+
+    view.onclick = e => {
+        const x = e.target.closest('[data-x]');
+        if (x) {
+            document.querySelectorAll('.art').forEach(a => a.classList.toggle('open', x.dataset.x === '1'));
+            return;
+        }
+        
+        const t = e.target.closest('.tl button');
+        if (t) {
+            const pp = t.closest('.pp');
+            const artNode = t.closest('.art');
+            const artNum = artNode.querySelector('.an').textContent;
+            const artText = pp.querySelector('p').textContent;
+            
+            let chapterNode = artNode.previousElementSibling;
+            while (chapterNode && !chapterNode.classList.contains('chapter-title')) {
+                chapterNode = chapterNode.previousElementSibling;
+            }
+            const chapterName = chapterNode ? chapterNode.innerText.replace(/\n/g, ' ') : '';
+            
+            let sectionNode = chapterNode ? chapterNode.previousElementSibling : null;
+            while (sectionNode && !sectionNode.classList.contains('sec-title')) {
+                sectionNode = sectionNode.previousElementSibling;
+            }
+            const sectionName = sectionNode ? sectionNode.innerText : '';
+
+            let parts = [cur.title];
+            if (sectionName) parts.push(sectionName.replace(/\./g, ''));
+            if (chapterName) parts.push(chapterName.replace(/\./g, ''));
+            parts.push(`Статья ${artNum}`);
+            
+            const fullRef = parts.join(', ');
+            const copyText = `${artText}\n\n[${fullRef}]`;
+            
+            navigator.clipboard && navigator.clipboard.writeText(copyText).catch(() => {});
+            t.textContent = 'Готово';
+            setTimeout(() => t.textContent = 'Копировать', 1200);
+            return;
+        }
+
+        const h = e.target.closest('.ah');
+        if (h) {
+            const s = h.parentNode;
+            s.classList.toggle('open');
+            if (s.classList.contains('open')) history.replaceState(null, '', '#' + s.id);
+        }
+    };
+
+    $('#nav').onclick = e => {
+        const b = e.target.closest('.lh');
+        if (b) {
+            const id = b.dataset.l;
+            if (openLawId === id) {
+                openLawId = null;
+            } else {
+                openLawId = id;
+                terms = [];
+                show(LAWS.find(l => l.id === id));
+            }
+            nav();
+        }
+    };
+
+    let hits = [], sel = 0;
+    function search() {
+        let v = norm(qi.value.trim()).replace(/\bст\.?\s*(?=\d)/g, 'статья ');
+        terms = [];
+        if (!v) { res.classList.remove('on'); return; }
+        const ws = v.split(/\s+/).filter(Boolean);
+        terms = ws.filter(w => w !== 'статья');
+        hits = [];
+        LAWS.forEach(l => {
+            if (!l.sections) return;
+            l.sections.forEach(s => (s.chapters || []).forEach(c => (c.articles || []).forEach(a => {
+                if (!ws.every(w => a.hay.includes(w))) return;
+                let score = 0;
+                ws.forEach(w => {
+                    if (/^\d+$/.test(w) && (a.n || '').endsWith(' ' + w)) score += 10;
+                    if (norm(a.n || '').includes(w)) score += 3;
+                });
+                hits.push({ a, s: score });
+            })));
+        });
+        hits.sort((x, y) => y.s - x.s);
+        hits = hits.slice(0, 30);
+        sel = 0;
+        paint();
+    }
+
+    function paint() {
+        res.classList.add('on');
+        res.innerHTML = hits.length ? hits.map((h, i) => {
+            const a = h.a;
+            const all = Array.isArray(a.paragraphs) ? a.paragraphs.join(' ') : '';
+            const n = norm(all);
+            let p = terms.length ? n.indexOf(terms[0]) : 0;
+            if (p < 0) p = 0;
+            const st = Math.max(0, p - 50);
+            return `<a data-i="${i}" class="${i === sel ? 'sel' : ''}">
+                <div class="rt">${esc(a.l.title)} · ${esc(a.c.n || '')} · ${esc(a.n || '')}</div>
+                <div class="rs">${st ? '…' : ''}${hl(all.slice(st, st + 170), terms)}${all.length > st + 170 ? '…' : ''}</div>
+            </a>`;
+        }).join('') : '<div class="no">Ничего не найдено.</div>';
+    }
+
+    qi.oninput = search;
+    qi.onkeydown = e => {
+        if (!hits.length) return;
+        if (e.key === 'ArrowDown') { sel = Math.min(sel + 1, hits.length - 1); paint(); e.preventDefault(); }
+        else if (e.key === 'ArrowUp') { sel = Math.max(sel - 1, 0); paint(); e.preventDefault(); }
+        else if (e.key === 'Enter') openArt(hits[sel].a);
+        else if (e.key === 'Escape') { res.classList.remove('on'); qi.blur(); }
+    };
+
+    res.onclick = e => { const a = e.target.closest('a'); if (a) openArt(hits[+a.dataset.i].a); };
+    document.addEventListener('click', e => { if (!e.target.closest('.sw')) res.classList.remove('on'); });
+    addEventListener('keydown', e => { if (e.key === '/' && document.activeElement !== qi) { e.preventDefault(); qi.focus(); } });
+
+    function fromHash() {
+        const id = location.hash.slice(1);
+        if (!id) return;
+        let found = null;
+        LAWS.forEach(l => l.sections && l.sections.forEach(s => (s.chapters || []).forEach(c => (c.articles || []).forEach(a => { if (a.id === id) found = a; }))));
+        if (found) {
+            openLawId = found.l.id;
+            if (found.l !== cur) show(found.l);
+            go(id, 1);
+        }
+    }
+
+    addEventListener('hashchange', fromHash);
+    show(cur);
+    fromHash();
+}
+</script>
+</body>
+</html>
